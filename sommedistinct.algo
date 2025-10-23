@@ -1,0 +1,54 @@
+ALGORITHM somme_distinct
+VAR
+    set1 : ARRAY_OF INTEGER[50];
+    set2 : ARRAY_OF INTEGER[50];
+    m, k, n1, n2, i, j : INTEGER;
+    temoin : BOOLEAN;
+    sum : INTEGER;
+BEGIN
+    // Initialisation
+    sum := 0;
+
+    // --- Lecture de set1 ---
+    write("Donner la taille de set1 : ");
+    read(n1);
+    FOR i FROM 0 TO n1 - 1 DO
+        read(set1[i]);
+    END_FOR
+
+    // --- Lecture de set2 ---
+    write("Donner la taille de set2 : ");
+    read(n2);
+    FOR j FROM 0 TO n2 - 1 DO
+        read(set2[j]);
+    END_FOR
+
+    // --- Somme des éléments de set1 qui ne sont pas dans set2 ---
+    FOR k FROM 0 TO n1 - 1 DO
+        temoin := FALSE;
+        FOR m FROM 0 TO n2 - 1 DO
+            IF (set1[k] = set2[m]) THEN
+                temoin := TRUE;
+            END_IF
+        END_FOR
+        IF (temoin = FALSE) THEN
+            sum := sum + set1[k];
+        END_IF
+    END_FOR
+
+    // --- Somme des éléments de set2 qui ne sont pas dans set1 ---
+    FOR k FROM 0 TO n2 - 1 DO
+        temoin := FALSE;
+        FOR m FROM 0 TO n1 - 1 DO
+            IF (set2[k] = set1[m]) THEN
+                temoin := TRUE;
+            END_IF
+        END_FOR
+        IF (temoin = FALSE) THEN
+            sum := sum + set2[k];
+        END_IF
+    END_FOR
+
+    // --- Affichage du résultat ---
+    write("La somme des entiers distincts est : ", sum);
+END
