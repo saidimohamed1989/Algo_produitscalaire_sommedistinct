@@ -1,0 +1,26 @@
+ALGORITHM ProduitScalaire
+VAR
+    A, B : TABLEAU[1..n] DE RÉEL
+    P : RÉEL
+    i, n : ENTIER
+BEGIN
+    Écrire("Donner la taille du vecteur : ")
+    Lire(n)
+
+    POUR i ← 1 À n FAIRE
+        Écrire("Entrer A[", i, "] : ")
+        Lire(A[i])
+    FINPOUR
+
+    POUR i ← 1 À n FAIRE
+        Écrire("Entrer B[", i, "] : ")
+        Lire(B[i])
+    FINPOUR
+
+    P ← 0
+    POUR i ← 1 À n FAIRE
+        P ← P + A[i] * B[i]
+    FINPOUR
+
+    Écrire("Le produit scalaire est : ", P)
+END
